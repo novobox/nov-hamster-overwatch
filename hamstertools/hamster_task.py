@@ -12,11 +12,12 @@ class TrackStandBy(object):
 class HamsterCtrl(object):
 
     current_activity = ''
+    start=TrackStandBy.active
     
     def _init_(self):
         self.start=TrackStandBy.active
         self.current_activity = ''
-    
+
     def command_start_track(self, activity):
         os.system("hamster-cli start %s" % activity)
         

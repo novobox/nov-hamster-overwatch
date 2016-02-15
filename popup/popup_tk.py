@@ -5,6 +5,9 @@ import sys
 
 from Tkinter import *
 
+from hamstertools.hamster_task import TrackActiv, TrackStandBy
+
+
 class PopupTask(object):
 
     def __init__(self, hamster):
@@ -29,7 +32,17 @@ class PopupTask(object):
 
         self.fenetre = Tk()
         self.fenetre.title("Im watching you")
+
+        if (self._hamster.start == TrackStandBy.active):
+            textactive = 'Tracking arrêté'
+            coloractive = 'red'
+        if (self._hamster.start == TrackActiv.active):
+            textactive = 'Tracking en cours'
+            coloractive = 'green'
             
+        label = Label(self.fenetre, text=textactive, bg=coloractive)
+        label.pack()        
+    
         label = Label(self.fenetre, text="Hamster Overwatch v0.1")
         label.pack()
 
