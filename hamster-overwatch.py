@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys, os, time, datetime, thread
+import sys, os, time, datetime
+
+from threading import Thread
 
 from popup.popup_tk import PopupTask
 from hamstertools.hamster_task import HamsterCtrl
@@ -44,12 +46,20 @@ def countdown_autoclose():
     countdown_close = (get_next_closing_time()-datetime.datetime.now()).total_seconds()
     time.sleep(countdown_close)
     #auto_close
-
+    hamster.stop_track()
+    
 
 if __name__ == '__main__':
     #get time before auto close
-    pop()
-    
+    th_pop = Thread(target=pop)
+    th_autoclose = Thread(target=countdown_autoclose)
+    try:
+        #th_pop.daemon = True
+        #th_autoclose.daemon = True
+        th_pop.start()
+        th_autoclose.start()
+    except KeyboardInterrupt:
+        sys.exit(1)
 
 #plz use service or make a hamster plugin
 #
