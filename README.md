@@ -1,5 +1,8 @@
 # nov-hamster-overwatch
-Checkpoints for your current activities with a popup, works with hamster project
+
+[![GitHub issues](https://img.shields.io/github/issues/novobox/nov-hamster-overwatch.svg?style=flat)](https://github.com/novobox/nov-hamster-overwatch/issues)
+
+Use hamster project cli and open a popup every N minutes to check/remind/track your current activity
 
 ## Install
 
@@ -8,6 +11,8 @@ https://github.com/projecthamster/hamster/tree/HAMSTER_APPLET_2_91_03
 
 ## Use
 
+```
 python hamster-overwatch.py
-or
+(or)
 ./hamster-overwatch.py
+```
